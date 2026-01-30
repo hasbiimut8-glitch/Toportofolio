@@ -8,6 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        html {
+    scroll-behavior: smooth;
+        }
+        
         /* 1. Variabel Warna & Font */
 :root {
     --primary-bg: #f5f7fa;
@@ -661,7 +665,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // Beri jeda sedikit agar transisi halaman selesai baru mulai mengetik
     setTimeout(typeWriter, 1000); 
 });
+// Fungsi Smooth Scroll untuk semua link navigasi
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault(); // Mencegah loncatan instan
 
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            // Menghitung posisi target dikurangi tinggi Nav (biar gak ketutup header)
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const targetPosition = targetElement.offsetTop - navHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+        
     </script>
 </body>
   </html>
