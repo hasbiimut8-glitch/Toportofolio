@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HisamDev - Solusi Web Modern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 1. Variabel Warna & Font */
+:root {
+    --primary-bg: #f5f7fa;
+    --secondary-bg: #ffffff;
+    --text-color: #333;
+    --heading-color: #1a202c;
+    --accent-color: #007bff; /* Biru cerah */
+    --accent-dark: #0056b3;
+    --border-color: #e2e8f0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.1);
+    --gradient-start: #007bff;
+    --gradient-end: #00c6ff;
+    --glass-effect: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode {
+    --primary-bg: #1a202c;
+    --secondary-bg: #2d3748;
+    --text-color: #e2e8f0;
+    --heading-color: #ffffff;
+    --accent-color: #667eea; /* Ungu kebiruan */
+    --accent-dark: #4c51bf;
+    --border-color: #4a5568;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.5);
+    --gradient-start: #667eea;
+    --gradient-end: #764ba2;
+    --glass-effect: rgba(255, 255, 255, 0.15);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    scroll-behavior: smooth;
+}
+
+/* Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-bg);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 700;
+    position: relative;
+}
+
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+.mt-30 { margin-top: 30px; }
+
+/* Tombol Global */
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    padding: 14px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px var(--shadow-medium);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px var(--shadow-medium);
+    opacity: 0.9;
+}
+
+.btn-primary.large-btn {
+    padding: 18px 40px;
+    font-size: 1.1rem;
+}
+
+/* Navigasi */
+nav {
+    background-color: var(--secondary-bg);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    text-decoration: none;
+}
+
+.brand span {
+    color: var(--accent-color);
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    text-align: center;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: moveEffect 15s infinite alternate;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: moveEffect 20s infinite alternate-reverse;
+}
+
+@keyframes moveEffect {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: #e0e7ff; /* Sedikit lebih terang dari teks */
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* Fitur Grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    background-color: var(--secondary-bg);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px var(--shadow-medium);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    color: var(--heading-color);
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* Service Grid */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background-color: var(--primary-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-light);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px var(--shadow-medium);
+}
+
+.service-card h3 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.service-card .price {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    display: block; /* Agar harga punya baris sendiri */
+}
+
+.service-card .btn-order {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.service-card .btn-order:hover {
+    background: var(--accent-dark);
+}
+
+/* Testimonial Grid */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background-color: var(--secondary-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-light);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px var(--shadow-medium);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.testimonial-card .author {
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+    transition: background 0.3s ease, transform 0
+/* Efek kursor berkedip */
+#typing-text::after {
+    content: "|";
+    animation: blink 0.7s infinite;
+    margin-left: 5px;
+    color: var(--accent-color);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+    </style>
+</head>
+<body>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="brand">Hisam<span>Dev</span></a>
+            <div class="nav-links">
+                <a href="#services">Layanan</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#contact">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+    <div class="container">
+        <h1>Ciptakan Web Impianmu Bersama <span>HisamDev</span></h1>
+        <p id="typing-text" style="min-height: 1.6em;"></p> 
+        <a href="#services" class="btn-primary">Lihat Layanan Kami</a>
+    </div>
+</header>
+
+    <section id="features" class="section-padding">
+        <div class="container">
+            <h2 class="section-heading">Kenapa Harus HisamDev?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Desain Modern</h3>
+                    <p>Tampilan website futuristik, bersih, dan responsif di semua perangkat.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Performa Optimal</h3>
+                    <p>Website super cepat dengan kode yang rapi dan terstruktur.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Solusi Kustom</h3>
+                    <p>Fitur dibuat sesuai kebutuhan spesifik bisnismu, bukan cuma template.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding bg-secondary">
+        <div class="container">
+            <h2 class="section-heading">Layanan Kami</h2>
+            <div id="service-list" class="service-grid">
+                </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section-padding">
+        <div class="container">
+            <h2 class="section-heading">Apa Kata Mereka?</h2>
+            <div id="testimonial-list" class="testimonial-grid">
+                </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding bg-secondary">
+        <div class="container text-center">
+            <h2 class="section-heading">Ayo Wujudkan Idenya!</h2>
+            <p>Siap untuk meningkatkan bisnismu dengan website profesional? Hubungi saya sekarang!</p>
+            <a href="https://wa.me/6288994227807?text=Halo%20Hisam,%20saya%20tertarik%20dengan%20jasa%20pembuatan%20website%20Anda." target="_blank" class="btn-primary large-btn">Chat via WhatsApp</a>
+        </div>
+    </section>
+
+    <section id="admin-panel" class="section-padding bg-secondary" style="display:none; margin-top: 50px;">
+        <div class="container">
+            <h2 class="section-heading">Admin Dashboard</h2>
+            <div class="admin-card">
+                <h3>Tambah Jasa Baru</h3>
+                <input type="text" id="inp-nama" placeholder="Nama Jasa (cth: Landing Page UMKM)">
+                <input type="text" id="inp-desc" placeholder="Deskripsi Jasa (cth: Web satu halaman responsif)">
+                <input type="text" id="inp-harga" placeholder="Harga (cth: Rp 200rb)">
+                <button onclick="tambahJasa()" class="btn-admin">Simpan Jasa</button>
+            </div>
+            <div class="admin-card mt-30">
+                <h3>Tambah Testimoni Baru</h3>
+                <textarea id="inp-testi-text" placeholder="Isi Testimoni"></textarea>
+                <input type="text" id="inp-testi-author" placeholder="Nama Klien / Perusahaan">
+                <button onclick="tambahTestimoni()" class="btn-admin">Simpan Testimoni</button>
+            </div>
+            <div class="admin-card mt-30">
+                <h3>Data Jasa Saat Ini</h3>
+                <div id="admin-service-list"></div>
+            </div>
+            <div class="admin-card mt-30">
+                <h3>Data Testimoni Saat Ini</h3>
+                <div id="admin-testimonial-list"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; <span id="current-year"></span> HisamDev. Built with Passion on Mobile.</p>
+        </div>
+    </footer>
+
+    <script>
+        const noWa = "6288994227807";
+
+// Inisialisasi data dari LocalStorage atau data default
+let services = JSON.parse(localStorage.getItem('hisamServices')) || [
+    { nama: "Landing Page UMKM", deskripsi: "Website satu halaman responsif.", harga: "Rp 200rb" },
+    { nama: "Web Sistem (Local)", deskripsi: "Sistem aplikasi web tanpa database.", harga: "Rp 500rb" },
+    { nama: "Maintenance Web", deskripsi: "Jasa update & perbaikan bug.", harga: "Hubungi saja" }
+];
+
+let testimonials = JSON.parse(localStorage.getItem('hisamTestimonials')) || [
+    { text: "Hasilnya rapi banget, harganya terjangkau. Orangnya juga ramah.", author: "Toko Berkah Jaya" },
+    { text: "Sistem catat stoknya ngebantu banget buat jualan saya sehari-hari. Sukses terus!", author: "Freelance Designer" }
+];
+
+// --- Fungsi untuk Render Tampilan ---
+
+// Render Jasa
+function renderServices() {
+    const serviceListContainer = document.getElementById('service-list');
+    const adminServiceListContainer = document.getElementById('admin-service-list');
+
+    serviceListContainer.innerHTML = '';
+    adminServiceListContainer.innerHTML = '';
+
+    services.forEach((item, index) => {
+        const pesan = encodeURIComponent(`Halo Hisam, saya tertarik order: ${item.nama}`);
+        // Tampilan di Frontend
+        serviceListContainer.innerHTML += `
+            <div class="service-card">
+                <h3>${item.nama}</h3>
+                <p>${item.deskripsi}</p>
+                <span class="price">${item.harga}</span>
+                <a href="https://wa.me/${noWa}?text=${pesan}" target="_blank" class="btn-order">Order via WhatsApp</a>
+            </div>`;
+        
+        // Tampilan di Admin Panel
+        adminServiceListContainer.innerHTML += `
+            <div class="admin-item">
+                <div class="admin-item-text">
+                    <strong>${item.nama}</strong> - ${item.harga}<br>
+                    <small>${item.deskripsi}</small>
+                </div>
+                <button class="btn-delete" onclick="hapusJasa(${index})">Hapus</button>
+            </div>`;
+    });
+}
+
+// Render Testimoni
+function renderTestimonials() {
+    const testimonialListContainer = document.getElementById('testimonial-list');
+    const adminTestimonialListContainer = document.getElementById('admin-testimonial-list');
+
+    testimonialListContainer.innerHTML = '';
+    adminTestimonialListContainer.innerHTML = '';
+
+    testimonials.forEach((item, index) => {
+        // Tampilan di Frontend
+        testimonialListContainer.innerHTML += `
+            <div class="testimonial-card">
+                <p>"${item.text}"</p>
+                <span class="author">- ${item.author}</span>
+            </div>`;
+
+        // Tampilan di Admin Panel
+        adminTestimonialListContainer.innerHTML += `
+            <div class="admin-item">
+                <div class="admin-item-text">
+                    <strong>${item.author}</strong><br>
+                    <small>${item.text}</small>
+                </div>
+                <button class="btn-delete" onclick="hapusTestimoni(${index})">Hapus</button>
+            </div>`;
+    });
+}
+
+// --- Fungsi Admin Panel ---
+
+// Tambah Jasa
+function tambahJasa() {
+    const nama = document.getElementById('inp-nama').value;
+    const desc = document.getElementById('inp-desc').value;
+    const harga = document.getElementById('inp-harga').value;
+
+    if (nama && desc && harga) {
+        services.push({ nama, deskripsi: desc, harga });
+        localStorage.setItem('hisamServices', JSON.stringify(services));
+        renderServices();
+        document.getElementById('inp-nama').value = '';
+        document.getElementById('inp-desc').value = '';
+        document.getElementById('inp-harga').value = '';
+        alert('Jasa berhasil ditambahkan!');
+    } else {
+        alert("Mohon isi semua kolom jasa!");
+    }
+}
+
+// Hapus Jasa
+function hapusJasa(index) {
+    if (confirm("Yakin ingin menghapus jasa ini?")) {
+        services.splice(index, 1);
+        localStorage.setItem('hisamServices', JSON.stringify(services));
+        renderServices();
+    }
+}
+
+// Tambah Testimoni
+function tambahTestimoni() {
+    const text = document.getElementById('inp-testi-text').value;
+    const author = document.getElementById('inp-testi-author').value;
+
+    if (text && author) {
+        testimonials.push({ text, author });
+        localStorage.setItem('hisamTestimonials', JSON.stringify(testimonials));
+        renderTestimonials();
+        document.getElementById('inp-testi-text').value = '';
+        document.getElementById('inp-testi-author').value = '';
+        alert('Testimoni berhasil ditambahkan!');
+    } else {
+        alert("Mohon isi semua kolom testimoni!");
+    }
+}
+
+// Hapus Testimoni
+function hapusTestimoni(index) {
+    if (confirm("Yakin ingin menghapus testimoni ini?")) {
+        testimonials.splice(index, 1);
+        localStorage.setItem('hisamTestimonials', JSON.stringify(testimonials));
+        renderTestimonials();
+    }
+}
+
+// --- Logika Dark Mode + LocalStorage ---
+const toggleBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Cek tema saat load
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'light') {
+    body.classList.remove('dark-mode');
+    toggleBtn.textContent = '🌙';
+} else {
+    body.classList.add('dark-mode');
+    toggleBtn.textContent = '☀️';
+}
+
+// Toggle tema saat klik
+toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    toggleBtn.textContent = isDark ? '☀️' : '🌙';
+});
+
+// --- Inisialisasi saat Halaman Dimuat ---
+document.addEventListener('DOMContentLoaded', () => {
+    renderServices();
+    renderTestimonials();
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Cek URL untuk menampilkan admin panel
+    if (window.location.hash === '#admin') {
+        document.getElementById('admin-panel').style.display = 'block';
+    }
+});
+const textElement = document.getElementById("typing-text");
+const textToType = "Membangun solusi digital yang unik, cepat, dan terpercaya untuk bisnismu.";
+let index = 0;
+
+function typeWriter() {
+    if (index < textToType.length) {
+        textElement.innerHTML += textToType.charAt(index);
+        index++;
+        // Kecepatan mengetik (dalam milidetik)
+        setTimeout(typeWriter, 50); 
+    }
+}
+
+// Jalankan fungsi saat halaman selesai dimuat
+document.addEventListener("DOMContentLoaded", () => {
+    // Beri jeda sedikit agar transisi halaman selesai baru mulai mengetik
+    setTimeout(typeWriter, 1000); 
+});
+
+    </script>
+</body>
+  </html>
+  
